@@ -25,7 +25,8 @@ body {
 
 button,
 input,
-select {
+select,
+textarea {
     font: inherit;
 }
 
@@ -147,8 +148,10 @@ select {
 }
 
 .field input,
+.field textarea,
 .field select,
 .series-row input,
+.series-row textarea,
 .series-row select {
     width: 100%;
     min-height: 42px;
@@ -162,6 +165,12 @@ select {
 .field select,
 .series-row select {
     padding-right: 36px;
+}
+
+.field textarea,
+.series-row textarea {
+    resize: vertical;
+    min-height: 92px;
 }
 
 .file-input {
@@ -179,6 +188,11 @@ select {
     flex-wrap: wrap;
 }
 
+.advanced-toggle {
+    width: 100%;
+    justify-content: center;
+}
+
 .button,
 .ghost-button,
 .danger-button {
@@ -186,6 +200,21 @@ select {
     border-radius: 999px;
     padding: 9px 14px;
     cursor: pointer;
+    transition: transform 120ms ease, opacity 120ms ease, box-shadow 120ms ease;
+}
+
+.button:hover,
+.ghost-button:hover,
+.danger-button:hover {
+    transform: translateY(-1px);
+}
+
+.button:disabled,
+.ghost-button:disabled,
+.danger-button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
 }
 
 .button {
@@ -204,6 +233,17 @@ select {
 }
 
 .series-list {
+    display: grid;
+    gap: 10px;
+}
+
+.advanced-panel {
+    display: grid;
+    gap: 16px;
+    margin-top: 14px;
+}
+
+.advanced-group {
     display: grid;
     gap: 10px;
 }
@@ -232,6 +272,13 @@ select {
     gap: 12px;
     margin-top: 10px;
     align-items: end;
+}
+
+.line-style-row {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 10px;
+    align-items: center;
 }
 
 .danger-button.full-width {
@@ -280,6 +327,31 @@ select {
     display: flex;
     gap: 10px;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.plot-meta-primary {
+    display: grid;
+    gap: 2px;
+}
+
+.plot-meta-title {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.meta-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(15, 118, 110, 0.08);
+    border: 1px solid rgba(15, 118, 110, 0.14);
+    color: #0f4f4a;
+    font-size: 0.92rem;
+    font-weight: 600;
 }
 
 .plot-card {
@@ -304,6 +376,10 @@ select {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
+}
+
+.plot-actions-row {
+    margin-top: 10px;
 }
 
 .toggle {
@@ -338,5 +414,9 @@ select {
 
     .series-actions {
         grid-template-columns: 1fr;
+    }
+
+    .plot-meta-actions {
+        justify-content: flex-start;
     }
 }
